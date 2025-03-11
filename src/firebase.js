@@ -1,10 +1,10 @@
 // src/firebase.js
-
 import { initializeApp } from 'firebase/app';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, signOut, updateProfile, sendPasswordResetEmail } from 'firebase/auth';
+import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore';
 import { getAnalytics } from 'firebase/analytics';
 
-// Firebase configuration object
+// Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyA45lh-0hXjXtjF0hiL6MbidUhz8kelbOM",
   authDomain: "expense-tracker-2-72e9e.firebaseapp.com",
@@ -18,9 +18,20 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-
-// Initialize Firebase Authentication
 const auth = getAuth(app);
+const db = getFirestore(app);
 
-// Export the authentication and analytics for use in other files
-export { auth, createUserWithEmailAndPassword, analytics };
+// Export necessary Firebase functions
+export { 
+  auth, 
+  createUserWithEmailAndPassword, 
+  signInWithEmailAndPassword, 
+  sendEmailVerification, 
+  signOut, 
+  updateProfile, 
+  sendPasswordResetEmail, 
+  db, 
+  getDoc, 
+  setDoc, 
+  doc 
+};
